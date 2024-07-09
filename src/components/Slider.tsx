@@ -2,25 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
 
 const Slider = ({ sliderData }: any): JSX.Element | null => {
-  interface images {
-    desktop: string;
-    mobile: string;
-  }
-
-  const fillImagesArray = (arr: any) => {
-    let images: images[] = [];
+  const findItemsWithImages = (arr: any) => {
+    let images: any[] = [];
     arr.map((elem: any) => {
       if (elem.poster || elem.thumbnail) {
-        images.push({
-          desktop: elem.poster || elem.thumbnail,
-          mobile: elem.posterPortrait || elem.portraitThumbnail,
-        });
+        images.push(elem);
       }
     });
     return images;
   };
 
-  const images = fillImagesArray(sliderData);
+  const images = findItemsWithImages(sliderData);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -65,7 +57,11 @@ const Slider = ({ sliderData }: any): JSX.Element | null => {
           }}
         >
           {images.map((image) => (
-            <img src={image.desktop} className="object-cover" />
+            <img
+              src={image.poster || image.thumbnail}
+              className="object-cover"
+              alt={image.description}
+            />
           ))}
         </div>
         <button
