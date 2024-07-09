@@ -29,6 +29,7 @@ module.exports = {
       width: {
         'min-1080': 'min(100%, 1080px)',
       },
+      
     },
   },
   plugins: [require('@tailwindcss/typography')],

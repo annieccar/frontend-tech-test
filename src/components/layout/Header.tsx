@@ -1,6 +1,6 @@
 import React from 'react';
 
 function Header(): JSX.Element {
-  return <></>;
+  return <>Header</>;
 }
 export default Header;
