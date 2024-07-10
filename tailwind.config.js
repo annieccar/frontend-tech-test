@@ -29,7 +29,14 @@ module.exports = {
       width: {
         'min-1080': 'min(100%, 1080px)',
       },
-      
+    },
+    screens: {
+      xs: '420px',
+      sm: '640px',
+      md: '768px',
+      lg: '1023px',
+      xl: '1280px',
+      '2xl': '1536px',
     },
   },
   plugins: [require('@tailwindcss/typography')],

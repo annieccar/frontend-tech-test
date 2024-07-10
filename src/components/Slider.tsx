@@ -23,7 +23,6 @@ const Slider = ({ sliderData }: any): JSX.Element | null => {
   };
 
   const previousImage = () => {
-    console.log('hello');
     currentImageIndex === 0
       ? setCurrentImageIndex(images.length - 1)
       : setCurrentImageIndex(currentImageIndex - 1);
