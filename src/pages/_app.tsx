@@ -6,6 +6,7 @@ import NextNProgress from 'nextjs-progressbar';
 
 import { ViewportProvider } from '@onrewind/ui';
 
+import Ad from '../components/Ad';
 import Carousel from '../components/Carousel';
 import Slider from '../components/Slider';
 
@@ -36,11 +37,16 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         return components.filter(
           (component: any) => component._kenticoItemType === 'section_static_carousel',
         )[0].items;
+      case 'ad':
+        return components.filter(
+          (component: any) => component._kenticoItemType === 'section_static_ad',
+        );
     }
   };
 
   const sliderData = getData(components, 'slider');
   const carouselData = getData(components, 'carousel');
+  const adData = getData(components, 'ad');
 
   // console.log('webConfig', webConfig);
 
@@ -52,8 +58,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           <NextNProgress color="var(--secondary)" />
           <Layout>
             <Component {...pageProps} />
-            <Slider sliderData={sliderData} />
-            <Carousel carouselData={carouselData} />
+            {/* <Slider sliderData={sliderData} />
+            <Carousel carouselData={carouselData} /> */}
+            <Ad adData={adData} />
           </Layout>
         </ViewportProvider>
         <ReactQueryDevtools initialIsOpen={false} />
