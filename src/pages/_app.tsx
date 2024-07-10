@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { InitConfig } from '@origins-digital/types/ott';
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import NextNProgress from 'nextjs-progressbar';
@@ -9,6 +10,7 @@ import { ViewportProvider } from '@onrewind/ui';
 import Ad from '../components/Ad';
 import Carousel from '../components/Carousel';
 import Slider from '../components/Slider';
+import VideoPlayer from '../pages/videos/[id]/[slug]';
 
 import '../styles.css';
 
@@ -49,6 +51,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const adData = getData(components, 'ad');
 
   // console.log('webConfig', webConfig);
+  const video = components[4].Videos[3];
 
   return (
     <>
@@ -58,9 +61,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           <NextNProgress color="var(--secondary)" />
           <Layout>
             <Component {...pageProps} />
-            {/* <Slider sliderData={sliderData} />
-            <Carousel carouselData={carouselData} /> */}
+            <Slider sliderData={sliderData} />
+            <Carousel carouselData={carouselData} />
             <Ad adData={adData} />
+            <VideoPlayer video={video} />
           </Layout>
         </ViewportProvider>
         <ReactQueryDevtools initialIsOpen={false} />
