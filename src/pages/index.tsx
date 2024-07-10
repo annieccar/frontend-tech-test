@@ -2,7 +2,6 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Cms from 'src/services/Cms';
 
 import { DEFAULT_LANGUAGE, KENTICO_HARDCODED_PAGES } from '$utils/constants';
-import MyApp from './_app';
 
 type IProps = InferGetStaticPropsType<typeof getStaticProps>;
 

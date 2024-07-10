@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
+import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
 
-const Carousel = ({ carouselData }: any) => {
+function Carousel({ carouselData }: any) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [carouselLength, setCarouselLength] = useState(0);
 
@@ -48,6 +48,7 @@ const Carousel = ({ carouselData }: any) => {
             >
               {carouselData.map((elem: any) => (
                 <div
+                  key={elem.id}
                   className="hover:scale-[115%] duration-300 ease-in-out 
 "
                 >
@@ -75,6 +76,6 @@ const Carousel = ({ carouselData }: any) => {
       )}
     </div>
   );
-};
+}
 
 export default Carousel;

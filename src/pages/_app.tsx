@@ -6,8 +6,8 @@ import NextNProgress from 'nextjs-progressbar';
 
 import { ViewportProvider } from '@onrewind/ui';
 
-import Slider from '../components/Slider';
 import Carousel from '../components/Carousel';
+import Slider from '../components/Slider';
 
 import '../styles.css';
 
@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const sliderData = getData(components, 'slider');
   const carouselData = getData(components, 'carousel');
 
-  console.log('webConfig', webConfig);
+  // console.log('webConfig', webConfig);
 
   return (
     <>
