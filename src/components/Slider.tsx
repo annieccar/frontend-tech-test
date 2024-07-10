@@ -41,30 +41,46 @@ const Slider = ({ sliderData }: any): JSX.Element | null => {
   }, [images, currentImageIndex]);
 
   return (
-    <div className="w-[60%] m-auto">
+    <div className="w-[80%] md:w-[60%] m-auto">
       <div className="overflow-hidden relative">
         <button
-          className="absolute right-2 inset-y-1/2 text-white text-2xl z-10"
+          className="absolute right-2 inset-y-1/2 text-background text-2xl z-10 hover:scale-110"
           onClick={() => nextImage()}
         >
           <IoIosArrowDropright />
         </button>
-        <div
-          className="flex transition ease-out duration-1000"
-          style={{
-            transform: `translateX(-${currentImageIndex * 100}%)`,
-          }}
-        >
-          {images.map((image) => (
-            <img
-              src={image.poster || image.thumbnail}
-              className="object-cover"
-              alt={image.description}
-            />
-          ))}
+        <div className="overflow-hidden relative">
+          <div
+            className="flex transition ease-out duration-1000"
+            style={{
+              transform: `translateX(-${currentImageIndex * 100}%)`,
+            }}
+          >
+            {images.map((image) => (
+              <img
+                key={image.id}
+                src={image.poster || image.thumbnail}
+                className="object-cover"
+                alt={image.description}
+              />
+            ))}
+          </div>
+          <div className="absolute bottom-2 py-1 flex justify-center w-full">
+            {images.map((image, index) => {
+              return (
+                <div
+                  key={image.id}
+                  className={`rounded-full w-2 h-2 m-0.5 lg:mx-1 lg:w-3 lg:h-3  ${
+                    index !== currentImageIndex ? 'bg-slate-400 opacity-50' : 'bg-white'
+                  }`}
+                />
+              );
+            })}
+          </div>
         </div>
+
         <button
-          className="absolute left-2 inset-y-1/2 text-white text-2xl"
+          className="absolute left-2 inset-y-1/2 text-background text-2xl hover:scale-110"
           onClick={() => previousImage()}
         >
           <IoIosArrowDropleft />

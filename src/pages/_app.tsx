@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           <NextNProgress color="var(--secondary)" />
           <Layout>
             <Component {...pageProps} />
-            {/* <Slider sliderData={sliderData} /> */}
+            <Slider sliderData={sliderData} />
             <Carousel carouselData={carouselData} />
           </Layout>
         </ViewportProvider>

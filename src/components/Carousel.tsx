@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
 
 const Carousel = ({ carouselData }: any) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -13,8 +13,6 @@ const Carousel = ({ carouselData }: any) => {
     handleResize();
   }, []);
 
-  console.log(currentImageIndex);
-
   const nextImage = () => {
     if (currentImageIndex === carouselData.length - carouselLength) {
       setCurrentImageIndex(carouselData.length - carouselLength);
@@ -27,51 +25,50 @@ const Carousel = ({ carouselData }: any) => {
     currentImageIndex === 0 ? setCurrentImageIndex(0) : setCurrentImageIndex(currentImageIndex - 1);
   };
 
-  console.log(carouselData);
-
   return (
     <div className="flex flex-col items-center w-100 lg:w-1000px">
       {carouselData.length > 0 && (
         <div className="flex relative">
-          {carouselData.length > carouselLength ? (
+          {currentImageIndex !== 0 ? (
             <button
-              className="absolute top-1/2 left-1 z-10 text-white hover:scale-110"
+              className="absolute top-1/2 left-1 z-10 text-background hover:scale-110"
               type="button"
               onClick={previousImage}
             >
-              <BsFillArrowLeftCircleFill />
+              <IoIosArrowDropleft />
             </button>
           ) : null}
 
-          <div className="flex w-80 h-44 md:h-36 md:w-[720px] overflow-x-hidden overflow-y-hidden relative">
+          <div className="flex w-[250px] h-44 md:h-36 md:w-[720px] overflow-x-hidden overflow-y-hidden relative">
             <div
-              className="flex w-80 md:w-[240px] transition ease-out duration-1000 "
+              className="flex w-[250px] md:w-[240px] transition ease-out duration-1000 "
               style={{
                 transform: `translateX(-${currentImageIndex * 100}%)`,
               }}
             >
-              {carouselData.map((elem) => (
+              {carouselData.map((elem: any) => (
                 <div
                   className="hover:scale-[115%] duration-300 ease-in-out 
 "
                 >
                   <img
+                    key={elem.id}
                     src={elem.thumbnail || elem.poster}
                     alt={elem.description}
-                    className="min-w-[320px] md:min-w-[240px] h-44 md:h-36 object-cover"
+                    className="min-w-[250px] md:min-w-[240px] h-44 md:h-36 object-cover"
                   />
                 </div>
               ))}
             </div>
           </div>
 
-          {carouselData.length > carouselLength ? (
+          {currentImageIndex < carouselData.length - carouselLength ? (
             <button
-              className="absolute top-1/2 right-1 z-10 text-white hover:scale-110"
+              className="absolute top-1/2 right-1 z-10 text-background hover:scale-110"
               type="button"
               onClick={() => nextImage()}
             >
-              <BsFillArrowRightCircleFill />
+              <IoIosArrowDropright />
             </button>
           ) : null}
         </div>
