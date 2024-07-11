@@ -19,10 +19,6 @@ const queryClient = new QueryClient({
 });
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  const webConfig = pageProps.webConfig;
-
-  console.log('webConfig', webConfig);
-
   return (
     <>
       <DefaultSeo title="Origins Digital technical test" description="" />

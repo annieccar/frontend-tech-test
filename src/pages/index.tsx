@@ -6,11 +6,7 @@ import { DEFAULT_LANGUAGE, KENTICO_HARDCODED_PAGES } from '$utils/constants';
 type IProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 function Home({ page }: IProps): JSX.Element | null {
-  return (
-    <>
-      <pre>{JSON.stringify(page, null, 2)}</pre>
-    </>
-  );
+  return <>{<pre className="hidden">{JSON.stringify(page, null, 2)}</pre>}</>;
 }
 
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
