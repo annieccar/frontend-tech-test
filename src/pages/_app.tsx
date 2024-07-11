@@ -19,13 +19,15 @@ const queryClient = new QueryClient({
 });
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  const webConfig = pageProps.webConfig;
+
   return (
     <>
       <DefaultSeo title="Origins Digital technical test" description="" />
       <QueryClientProvider client={queryClient}>
         <ViewportProvider>
           <NextNProgress color="var(--secondary)" />
-          <Layout>
+          <Layout webConfig={webConfig}>
             <Component {...pageProps} />
           </Layout>
         </ViewportProvider>

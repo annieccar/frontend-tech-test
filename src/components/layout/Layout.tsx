@@ -1,3 +1,4 @@
+import { InitConfig } from '@origins-digital/types/ott';
 import clsx from 'clsx';
 
 import Ad from '../../components/Ad';
@@ -8,8 +9,16 @@ import getData from '../../utils/getData';
 import Footer from './Footer';
 import Header from './Header';
 
-function Layout({ children }: { children: React.ReactNode }): JSX.Element {
+interface LayoutProps {
+  children: React.ReactNode;
+  webConfig: InitConfig;
+}
+
+function Layout({ children, webConfig }: LayoutProps): JSX.Element {
   const components = children?.props.page.components;
+
+  const headerData = webConfig.header;
+  const footerData = webConfig.footer;
 
   const sliderData = getData(components, 'slider');
   const carouselData = getData(components, 'carousel');
@@ -20,7 +29,7 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <>
       <div className="flex min-h-screen w-full flex-col gap-10 overflow-hidden p-2 bg-black">
-        <Header />
+        <Header headerData={headerData} />
         <main
           className={clsx('mx-auto flex w-full flex-grow flex-col content-spacer overflow-hidden')}
         >
@@ -34,7 +43,7 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
           <VideoPlayer video={video} />
           {children}
         </main>
-        <Footer />
+        <Footer footerData={footerData} />
       </div>
     </>
   );

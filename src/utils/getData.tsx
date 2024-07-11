@@ -1,6 +1,4 @@
-import { Component } from './Interfaces';
-
-const getData = (components, componentType: string): Component => {
+const getData = (components: any, componentType: string) => {
   switch (componentType) {
     case 'slider':
       return components.filter(
