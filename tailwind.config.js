@@ -27,9 +27,7 @@ module.exports = {
         error: '#ef4444',
         lightGray: '#D7D6D6',
       },
-      width: {
-        'min-1080': 'min(100%, 1080px)',
-      },
+
       backgroundImage: {
         'gradient-to-b': 'linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8))',
       },

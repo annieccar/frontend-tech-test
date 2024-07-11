@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
+import { RiArrowLeftWideLine, RiArrowRightWideLine } from 'react-icons/ri';
 
 function Slider({ sliderData }: any): JSX.Element | null {
   const findItemsWithImages = (arr: any) => {
@@ -48,7 +48,7 @@ function Slider({ sliderData }: any): JSX.Element | null {
   }, [images]);
 
   return (
-    <div className="w-[500px] h-[280px] m-auto">
+    <div className="w-[250px] h-[150px]  md:w-[600px] md:h-[350px] lg:w-[900px] lg:h-[500px] m-auto">
       <div className="h-full relative">
         <div
           className={`w-full h-full bg-center bg-cover transition-opacity duration-1000 rounded-sm ease-in-out ${
@@ -60,17 +60,29 @@ function Slider({ sliderData }: any): JSX.Element | null {
             })`,
           }}
         ></div>
+        <div className="absolute bottom-2 py-1 flex justify-center w-full">
+          {images.map((image, index) => {
+            return (
+              <div
+                key={image.id}
+                className={`rounded-full w-2 h-2 m-0.5 md:m-1  lg:w-3 lg:h-3  ${
+                  index !== currentImageIndex ? 'bg-slate-400 opacity-50' : 'bg-white'
+                }`}
+              />
+            );
+          })}
+        </div>
         <button
-          className="absolute left-2 inset-y-1/2 -translate-y-[50%] text-background text-2xl hover:scale-110"
+          className="absolute left-2 inset-y-1/2 -translate-y-[50%] text-background text-2xl lg:text-4xl hover:scale-110"
           onClick={() => previousImage()}
         >
-          <IoIosArrowDropleft />
+          <RiArrowLeftWideLine />
         </button>
         <button
-          className="absolute right-2 inset-y-1/2 -translate-y-[50%] text-background text-2xl z-10 hover:scale-110"
+          className="absolute right-2 inset-y-1/2 -translate-y-[50%] text-background text-2xl lg:text-4xl z-10 hover:scale-110"
           onClick={() => nextImage()}
         >
-          <IoIosArrowDropright />
+          <RiArrowRightWideLine />
         </button>
       </div>
     </div>

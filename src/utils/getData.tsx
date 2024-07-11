@@ -1,19 +1,17 @@
-import React from 'react';
+import { Component } from './Interfaces';
 
-const getData = (components: any[], componentType: string) => {
+const getData = (components, componentType: string): Component => {
   switch (componentType) {
     case 'slider':
       return components.filter(
-        (component: any) => component._kenticoItemType === 'section_static_slider',
+        (component) => component._kenticoItemType === 'section_static_slider',
       )[0].items;
     case 'carousel':
       return components.filter(
-        (component: any) => component._kenticoItemType === 'section_static_carousel',
+        (component) => component._kenticoItemType === 'section_static_carousel',
       )[0].items;
     case 'ad':
-      return components.filter(
-        (component: any) => component._kenticoItemType === 'section_static_ad',
-      );
+      return components.filter((component) => component._kenticoItemType === 'section_static_ad');
   }
 };
 

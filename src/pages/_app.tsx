@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { InitConfig } from '@origins-digital/types/ott';
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import NextNProgress from 'nextjs-progressbar';
