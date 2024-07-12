@@ -13,6 +13,8 @@ function Carousel({ carouselData }: any) {
     handleResize();
   }, []);
 
+  window.addEventListener('resize', handleResize);
+
   const nextImage = () => {
     if (currentImageIndex === carouselData.length - carouselLength) {
       setCurrentImageIndex(carouselData.length - carouselLength);

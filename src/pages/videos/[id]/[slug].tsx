@@ -1,6 +1,8 @@
 import React from 'react';
 import { BiFullscreen } from 'react-icons/bi';
 import { FaPlay, FaStepBackward, FaStepForward, FaVolumeUp } from 'react-icons/fa';
+import { useQuery } from 'react-query';
+import Cms from 'src/services/Cms';
 
 interface Video {
   currentFanViews: number;
@@ -22,6 +24,11 @@ interface Video {
 }
 
 function VideoPlayer({ video }: { video: Video }) {
+  // const fetchVideos = async () => await Cms.getVideos({ limit = 50 });
+  // const { data } = useQuery('videos', fetchVideos);
+
+  // console.log(data);
+
   const duration = video.duration.split(':');
   duration.shift();
 
