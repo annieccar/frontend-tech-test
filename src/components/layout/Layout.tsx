@@ -8,6 +8,9 @@ import VideoPlayer from '../../pages/videos/[id]/[slug]';
 import getData from '../../utils/getData';
 import Footer from './Footer';
 import Header from './Header';
+import { useQuery } from 'react-query';
+import Cms from 'src/services/Cms';
+import { DEFAULT_LANGUAGE, KENTICO_HARDCODED_PAGES } from '$utils/constants';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,7 +18,13 @@ interface LayoutProps {
 }
 
 function Layout({ children, webConfig }: LayoutProps): JSX.Element {
-  const components = children?.props.page.components;
+  const fetchDatas = () =>
+    Cms.getPageContent(KENTICO_HARDCODED_PAGES.HOME, {
+      params: DEFAULT_LANGUAGE,
+    });
+  const response = useQuery('page', fetchDatas, { initialData: children?.props.page.components });
+
+  const components = response.data;
 
   const headerData = webConfig.header;
   const footerData = webConfig.footer;
